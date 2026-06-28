@@ -1,0 +1,67 @@
+.page { padding: 1rem 0; }
+
+.pageTitle {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 0.3rem;
+}
+
+.subtitle {
+  font-size: 0.88rem;
+  color: #64748b;
+  margin-bottom: 1.2rem;
+}
+
+.empty {
+  text-align: center;
+  padding: 3rem;
+  color: #64748b;
+  background: #f8fafc;
+  border-radius: 12px;
+  border: 1px dashed #cbd5e1;
+}
+
+.list { display: flex; flex-direction: column; gap: 0.8rem; }
+
+.card {
+  background: #fff;
+  border: 1px solid #fecaca;
+  border-left: 4px solid #f87171;
+  border-radius: 10px;
+  padding: 1rem 1.2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.info { display: flex; flex-direction: column; gap: 0.2rem; }
+.name { font-weight: 700; color: #0f172a; font-size: 0.98rem; }
+.meta { font-size: 0.82rem; color: #64748b; }
+.notes { font-size: 0.8rem; color: #94a3b8; }
+
+.actions { display: flex; gap: 0.5rem; }
+
+.restoreBtn {
+  padding: 0.35rem 0.9rem;
+  border: none;
+  border-radius: 6px;
+  background: #dcfce7;
+  color: #15803d;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.deleteBtn {
+  padding: 0.35rem 0.9rem;
+  border: none;
+  border-radius: 6px;
+  background: #fee2e2;
+  color: #b91c1c;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+}

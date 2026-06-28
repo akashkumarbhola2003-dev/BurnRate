@@ -1,0 +1,60 @@
+{
+  "subscriptions": [
+    {
+      "id": "2",
+      "name": "Spotify",
+      "amount": 119,
+      "cycle": "monthly",
+      "category": "Entertainment",
+      "status": "active",
+      "startDate": "2025-03-10",
+      "nextBilling": "2026-07-10",
+      "notes": ""
+    },
+    {
+      "id": "3",
+      "name": "GitHub Pro",
+      "amount": 840,
+      "cycle": "monthly",
+      "category": "Tools",
+      "status": "active",
+      "startDate": "2025-06-01",
+      "nextBilling": "2026-06-15",
+      "notes": "Student plan"
+    },
+    {
+      "id": "4",
+      "name": "Amazon Prime",
+      "amount": 1499,
+      "cycle": "yearly",
+      "category": "Entertainment",
+      "status": "paused",
+      "startDate": "2025-04-01",
+      "nextBilling": "2027-04-01",
+      "notes": ""
+    },
+    {
+      "id": "5",
+      "name": "Gym Membership",
+      "amount": 999,
+      "cycle": "monthly",
+      "category": "Fitness",
+      "status": "cancelled",
+      "startDate": "2025-01-01",
+      "nextBilling": "2026-08-01",
+      "notes": "Cancelled after relocation"
+    },
+    {
+      "name": "Netflix",
+      "amount": 659,
+      "cycle": "monthly",
+      "category": "Entertainment",
+      "status": "active",
+      "startDate": "2026-06-13",
+      "nextBilling": "2026-06-15",
+      "notes": "",
+      "id": "gv6-IXDPbzE"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
