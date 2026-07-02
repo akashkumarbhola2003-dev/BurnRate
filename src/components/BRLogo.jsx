@@ -82,18 +82,19 @@
 
 
 
-
 import React, { useEffect, useRef, useState } from "react";
 import styles from "../styles/BRLogo.module.css";
 
-import aaonxt  from "../assets/aaonxt.jpg";
+import aaonxt  from "../assets/aaonxt.png";
 import spotify from "../assets/spotify.png";
 import prime   from "../assets/prime.png";
 import cultfit from "../assets/cultfit.png";
 import netflix from "../assets/netflix.png";
-import youtube from "../assets/youtube.jpg";
+import youtube from "../assets/youtube.png";
 
-function BRLogo() {
+// onFinish is called when the full animation completes —
+// the parent (SplashRoute in App.jsx) decides what happens next
+function BRLogo({ onFinish }) {
   const [burst, setBurst] = useState(false);
   const [showCursor, setShowCursor] = useState(false);
   const containerRef = useRef(null);
@@ -108,11 +109,17 @@ function BRLogo() {
       setShowCursor(true);
     }, 7000);
 
+    // After the full animation plays out, tell the parent we're done
+    const finishTimer = setTimeout(() => {
+      if (onFinish) onFinish();
+    }, 9000);
+
     return () => {
       clearTimeout(burstTimer);
       clearTimeout(cursorTimer);
+      clearTimeout(finishTimer);
     };
-  }, []);
+  }, [onFinish]);
 
   const spawnParticles = () => {
     const container = containerRef.current;
@@ -154,9 +161,7 @@ function BRLogo() {
 
   return (
     <div className={styles.splashContainer} ref={containerRef}>
-
       <div className={styles.scene}>
-        {/* Elliptical orbital rings */}
         <div className={styles.ring1} style={{position:'absolute',borderRadius:'50%',border:'1.5px solid rgba(249,115,22,0.3)',width:'340px',height:'120px',top:'50%',left:'50%',marginTop:'-60px',marginLeft:'-170px',transform:'rotateX(75deg)'}} />
         <div className={styles.ring2} style={{position:'absolute',borderRadius:'50%',border:'1.5px solid rgba(249,115,22,0.25)',width:'400px',height:'140px',top:'50%',left:'50%',marginTop:'-70px',marginLeft:'-200px',transform:'rotateX(72deg) rotateZ(60deg)'}} />
         <div className={styles.ring3} style={{position:'absolute',borderRadius:'50%',border:'1.5px solid rgba(249,115,22,0.2)',width:'360px',height:'130px',top:'50%',left:'50%',marginTop:'-65px',marginLeft:'-180px',transform:'rotateX(70deg) rotateZ(120deg)'}} />
@@ -173,7 +178,6 @@ function BRLogo() {
         ))}
       </div>
 
-      {/* BurnRate logo row — fire on left, typing text on right */}
       <div className={styles.logoRow}>
         <span className={styles.logoFire}>🔥</span>
         <div style={{ display: "flex", alignItems: "center" }}>
@@ -185,7 +189,6 @@ function BRLogo() {
       </div>
 
       <p className={styles.tagline}>Track what's burning your wallet</p>
-
     </div>
   );
 }

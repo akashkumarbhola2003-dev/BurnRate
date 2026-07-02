@@ -1,0 +1,130 @@
+.authPage {
+  width: 100vw;
+  height: 100vh;
+  background-color: #1a0f00;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed; 
+  top: 0;          
+  left: 0;         
+}
+
+.authCard {
+  background: #261500;
+  border: 1px solid rgba(249, 115, 22, 0.25);
+  border-radius: 16px;
+  padding: 2.2rem 2.4rem;
+  width: 360px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+}
+
+.brandRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.brandFire { font-size: 26px; }
+
+.brandText {
+  font-size: 20px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.5px;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+}
+
+.brandText span { color: #f97316; }
+
+.title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 4px;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+}
+
+.subtitle {
+  font-size: 13px;
+  color: #92400e;
+  margin: 0 0 24px;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field label {
+  font-size: 11px;
+  font-weight: 600;
+  color: #c2410c;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+}
+
+.field input {
+  padding: 10px 12px;
+  border: 1px solid rgba(249, 115, 22, 0.25);
+  border-radius: 8px;
+  font-size: 14px;
+  color: #fff;
+  background: #1a0f00;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+}
+
+.field input:focus {
+  outline: none;
+  border-color: #f97316;
+}
+
+.field input::placeholder { color: #57534e; }
+
+.error {
+  font-size: 11px;
+  color: #f87171;
+  font-weight: 500;
+}
+
+.submitBtn {
+  margin-top: 6px;
+  padding: 11px;
+  background: #f97316;
+  color: #0f0a00;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+}
+
+.submitBtn:hover { background: #ea6c0a; }
+.submitBtn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.toggleText {
+  text-align: center;
+  font-size: 12px;
+  color: #92400e;
+  margin-top: 18px;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+}
+
+.link {
+  color: #f97316;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.link:hover { text-decoration: underline; }
