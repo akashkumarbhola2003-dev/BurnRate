@@ -33,10 +33,12 @@ const Login = () => {
     }
 
     const result = await login(form.username, form.password);
+
+console.log("result:", result);        // ADD THIS
+
     if (result.success) {
       toast.success(`Welcome back, ${form.username}!`);
-      // Splash animation plays here, then Splash navigates to dashboard
-      navigate("/splash");
+     setTimeout(()=> navigate("/splash"),1000);
     } else {
       toast.error("Login failed. Check your credentials.");
     }

@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { SubscriptionProvider } from "./context/SubscriptionContext";
 import { AuthProvider, useAuthContext } from "./context/AuthContext";
@@ -17,60 +16,42 @@ import "react-toastify/dist/ReactToastify.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles/global.css";
 
+// Protected layout — Navbar + all app pages, only when logged in
+const ProtectedLayout = () => {
+  const { user } = useAuthContext();
+  if (!user) return <Navigate to="/login" />;
+  return (
+    <>
+      <Navbar />
+      <div className="container mt-4">
+        <Routes>
+          <Route path="/"             element={<Dashboard />} />
+          <Route path="/subscriptions" element={<Subscriptions />} />
+          <Route path="/add"          element={<AddSubscription />} />
+          <Route path="/edit"         element={<EditSubscription />} />
+          <Route path="/history"      element={<History />} />
+          <Route path="*"             element={<NotFound />} />
+        </Routes>
+      </div>
+    </>
+  );
+};
 
 function AppRoutes() {
   const { user } = useAuthContext();
-  const [showSplash, setShowSplash] = useState(false);
-
-  const SplashRoute = () => {
-    const [done, setDone] = useState(false);
-
-    if (done) return <Navigate to="/" />;
-
-    return <BRLogo onFinish={() => setDone(true)} />;
-  };
+  console.log("AppRoutes rendering, user:", user, "path:", window.location.pathname);
 
   return (
     <Routes>
-      {/* Public routes — only reachable when NOT logged in */}
-      <Route
-        path="/login"
-        element={user ? <Navigate to="/" /> : <Login />}
-      />
-      <Route
-        path="/register"
-        element={user ? <Navigate to="/" /> : <Register />}
-      />
+      {/* Splash MUST be first — before any other route */}
+      <Route path="/splash" element={<BRLogo />} />
 
-      {/* Splash plays once right after login/register, before dashboard */}
-      <Route
-        path="/splash"
-        element={user ? <SplashRoute /> : <Navigate to="/login" />}
-      />
+      {/* Public routes */}
+      <Route path="/login"    element={user ? <Navigate to="/" /> : <Login />} />
+      <Route path="/register" element={user ? <Navigate to="/" /> : <Register />} />
 
-      {/* Protected routes — only reachable when logged in */}
-      <Route
-        path="/*"
-        element={
-          user ? (
-            <>
-              <Navbar />
-              <div className="container mt-4">
-                <Routes>
-                  <Route path="/" element={<Dashboard />} />
-                  <Route path="/subscriptions" element={<Subscriptions />} />
-                  <Route path="/add" element={<AddSubscription />} />
-                  <Route path="/edit" element={<EditSubscription />} />
-                  <Route path="/history" element={<History />} />
-                  <Route path="*" element={<NotFound />} />
-                </Routes>
-              </div>
-            </>
-          ) : (
-            <Navigate to="/login" />
-          )
-        }
-      />
+      {/* Protected */}
+      <Route path="/*" element={<ProtectedLayout />} />
     </Routes>
   );
 }
